@@ -8,7 +8,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     
     path('stocks/', StocksCreateListView.as_view(), name = 'stocks-create-list'),
-    path('stocks/<int:pk>/', StocksRetrieveUpdateDestroyView.as_view(), name = 'stocks-datail-view'),
+    path('stocks/<str:ticker>/', StocksRetrieveUpdateDestroyView.as_view(), name='stocks-retrieve-update-destroy'),
     path('stockprices/', StockPriceCreateListView.as_view(), name='stockprices-list-create'),
     path('stockprices/<int:pk>/', StockPriceRetrieveUpdateDestroyView.as_view(), name='stockprices-retrieve-update-destroy'),
+    
 ]
