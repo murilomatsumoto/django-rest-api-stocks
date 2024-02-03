@@ -11,7 +11,11 @@ class Stocks(models.Model):
 class StockPrice(models.Model):
     stock = models.ForeignKey(Stocks, on_delete=models.CASCADE)
     date = models.DateField()
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    price = models.DecimalField(max_digits=10, decimal_places=2, default=None)
+    p_l = models.DecimalField(max_digits=10, decimal_places=2, default=None)
+    p_vp = models.DecimalField(max_digits=10, decimal_places=2, default=None)
+    dividend_y = models.DecimalField(max_digits=10, decimal_places=2, default=None)
+        
     
     class Meta:
         unique_together = ['stock', 'date']

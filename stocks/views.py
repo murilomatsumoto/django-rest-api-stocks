@@ -28,3 +28,10 @@ class StockPriceCreateListView(generics.ListCreateAPIView):
 class StockPriceRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = StockPrice.objects.all()
     serializer_class = StockPriceSerializer
+    
+    def get_object(self):
+        queryset = self.get_queryset()
+        stock_id = self.kwargs['stock_id']
+        date = self.kwargs['date']
+        obj = get_object_or_404(queryset, stock__id=stock_id, date=date)
+        return obj
